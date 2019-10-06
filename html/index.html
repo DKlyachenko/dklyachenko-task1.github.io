@@ -1,0 +1,152 @@
+<html>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<script src="../scripts/script.js"></script>
+
+<body>
+
+
+  <div id="mainWindow" >
+    <div class = "card">
+      <div class="card-header">
+      <h3>Invoices</h3>
+    </div>
+      <div class="card-body">
+      <button id="addNew" class="btn btn-primary">Add new</button>
+    </div>
+    </div>
+
+    <div id="filterWindow">
+      <div class="container">
+        <div class="form-row">
+          <div class="col-md-3">
+            Search: <input id="searchValue" placeholder="Text to find" class="form-control">
+          </div>
+          <div class="col-md-4">
+
+            Filter by: <select id="filterField" class="form-control">
+              <option value="">all</option>
+              <option value="number">Number</option>
+              <option value="date_created">Create</option>
+              <option value="date_due">Due</option>
+              <option value="date_supply">Supply</option>
+              <option value="comment">Comment</option>
+            </select>
+
+
+            <input id="filterValue" placeholder="Text to filter" class="form-control" style="display:none;">
+          </div>
+
+          <div class="col-md-3">
+            Order by: <select id="orderField" class="form-control">
+              <option value="">all</option>
+              <option value="number">Number</option>
+              <option value="date_created">Create</option>
+              <option value="date_due">Due</option>
+              <option value="date_supply">Supply</option>
+              <option value="comment">Comment</option>
+            </select>
+            <select id="orderValue" class="form-control" style="display:none;">
+              <option value="asc">Asc</option>
+              <option value="desc">Desc</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <button id="searchBtn" class="btn btn-primary" style="margin-top: 13%;">Go</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div id="data" >
+      <table id="myTable" class="table">
+        <thead>
+          <th style="width: 10.00%">Create</th>
+          <th style="width: 10.00%">No</th>
+          <th style="width: 10.00%">Supply</th>
+          <th style="width: 10.00%">Due</th>
+          <th style="width: 45.00%">Comment</th>
+          <th style="width: 15.00%"></th>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div id="editWindow" style="display: none;" class = "card">
+    <div class = "card-header">
+    <h3>Edit invoice</h3>
+  </div>
+  <div class = "card-body">
+    <input type="hidden" id="editId">
+    <input type="hidden" id="createDate">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          Number:<br>
+          <input id="number" class="form-control">
+        </div>
+        <div class="col">
+          Supply date:<br>
+          <input type="date" id="supplyDate" class="form-control">
+        </div>
+        <div class="col">
+          Due date:<br>
+          <input type="date" id="dueDate" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          Comment:<br>
+          <input size=80 id="comment" class="form-control">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary btnReturn">Back</button>
+    <button id="btnUpdate" class="btn btn-success">Save</button>
+  </div>
+</div>
+
+  <div id="addWindow" style="display: none;" class = "card">
+    <div class = "card-header">
+    <h3>Create invoice</h3>
+  </div>
+  <div class = "card-body">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          Number:<br>
+          <input id="number" class="form-control">
+        </div>
+        <div class="col">
+          Supply date:<br>
+          <input type="date" id="supplyDate" class="form-control">
+        </div>
+        <div class="col">
+          Due date:<br>
+          <input type="date" id="dueDate" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          Comment:<br>
+          <input size=80 id="comment" class="form-control">
+        </div>
+
+      </div>
+    </div>
+    <button class="btn btn-primary btnReturn">Back</button>
+    <button id="btnCreate" class="btn btn-success">Save</button>
+  </div>
+</div>
+
+
+</body>
+
+</html>
