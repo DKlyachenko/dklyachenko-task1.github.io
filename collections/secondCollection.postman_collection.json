@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "d6153ec0-1476-4514-8b26-ece4b7771c49",
+		"name": "secondCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getFilteredData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d93f601-010c-4986-839e-54220fdcb6ec",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Data is right\", function(){",
+							"    var key = pm.variables.get(\"key\");",
+							"    var val = pm.variables.get(\"value\");",
+							"    var id = pm.variables.get(\"id\");",
+							"    var number = pm.variables.get(\"number\");",
+							"    ",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0][key]).to.eql(val);",
+							"    pm.expect(jsonData[0][\"id\"]).to.eql(id);",
+							"    pm.expect(jsonData[0][\"number\"]).to.eql(Number(number));",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://guarded-fortress-00255.herokuapp.com/invoices/?{{key}}={{value}}",
+					"protocol": "https",
+					"host": [
+						"guarded-fortress-00255",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices",
+						""
+					],
+					"query": [
+						{
+							"key": "{{key}}",
+							"value": "{{value}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

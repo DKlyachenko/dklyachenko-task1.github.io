@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "a3691b90-e6e0-4291-8a3f-511e517a3ea9",
+		"name": "firstTestCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7b6550c-c9d1-4740-9e16-3debcd080836",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response must be valid and have a body\", function () {",
+							"     pm.response.to.be.ok; ",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; ",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.gt(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://guarded-fortress-00255.herokuapp.com/invoices",
+					"protocol": "https",
+					"host": [
+						"guarded-fortress-00255",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices"
+					]
+				},
+				"description": "Get invoices (with tests)"
+			},
+			"response": []
+		},
+		{
+			"name": "postRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "80e50fde-1d46-47f3-a6b6-72491b53f1ac",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response has right data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(\"1\");",
+							"    pm.expect(jsonData.number).to.eql(12345);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": \"1\",\r\n    \"direction\": \"8ad47368-b85b-4b25-a209-9a975fa85ba2\",\r\n    \"number\": 12345,\r\n    \"date_created\": \"1974-05-07\",\r\n    \"date_due\": \"2009-08-16\",\r\n    \"date_supply\": \"2005-05-28\",\r\n    \"comment\": \"Officia cillum fugiat aliqua dolor sint adipisicing anim elit ipsum proident pariatur veniam laborum in. Fugiat deserunt cillum ad irure excepteur occaecat. Exercitation nisi minim aliqua et proident.\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://guarded-fortress-00255.herokuapp.com/invoices",
+					"protocol": "https",
+					"host": [
+						"guarded-fortress-00255",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices"
+					]
+				},
+				"description": "Add invoice (with tests)"
+			},
+			"response": []
+		},
+		{
+			"name": "putRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51e4948f-9466-4dac-a5b8-06c0bb7b2553",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response has right data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(\"1\");",
+							"    pm.expect(jsonData.number).to.eql(123456);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"id\": \"1\",\n    \"direction\": \"8ad47368-b85b-4b25-a209-9a975fa85ba2\",\n    \"number\": 123456,\n    \"date_created\": \"1974-05-07\",\n    \"date_due\": \"2009-08-16\",\n    \"date_supply\": \"2005-05-28\",\n    \"comment\": \"Officia cillum fugiat aliqua dolor sint adipisicing anim elit ipsum proident pariatur veniam laborum in. Fugiat deserunt cillum ad irure excepteur occaecat. Exercitation nisi minim aliqua et proident.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://guarded-fortress-00255.herokuapp.com/invoices/1",
+					"protocol": "https",
+					"host": [
+						"guarded-fortress-00255",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices",
+						"1"
+					]
+				},
+				"description": "Changes invoice (with tests)"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "082cb95b-93fc-4c3e-b803-7f6e859ed809",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://guarded-fortress-00255.herokuapp.com/invoices/1",
+					"protocol": "https",
+					"host": [
+						"guarded-fortress-00255",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"invoices",
+						"1"
+					]
+				},
+				"description": "Delete invoice (with tests)"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
