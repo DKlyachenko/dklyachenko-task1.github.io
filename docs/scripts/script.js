@@ -38,14 +38,17 @@ $(function () {
     $('#searchBtn').click(function () {
         var filterField = $('#filterField').val();
         var searchValue = $('#searchValue').val();
-        data = {
-            _sort: $('#orderField').val(),
-            _order: $('#orderValue').val()
-        }
+        var sortField = $('#orderField').val();
+        var sortValue = $('#orderValue').val();
+        data = {};
         if (filterField !== ''){
             data[filterField] = $('#filterValue').val();}
         if (searchValue !== ''){
             data['q'] = searchValue;
+        }
+        if (sortField !== '' && sortValue !== ''){
+            data['_sort'] = sortField;
+            data['_order'] = sortValue;
         }
         
         $.ajax({
