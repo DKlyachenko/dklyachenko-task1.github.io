@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  -"6"
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: bash ciScripts/deploy.sh $TRAVIS_BRANCH
+  on: 
+    all_branches: true
