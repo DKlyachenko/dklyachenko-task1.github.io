@@ -4,7 +4,7 @@ install:
   - npm install newman
 
 script:
-  - node_modules/newman run collections/secondCollection.postman_collection.json -e collections/Testing.postman_environment.json -d collections/testData.json
+  - newman run collections/secondCollection.postman_collection.json -e collections/Testing.postman_environment.json -d collections/testData.json
 
 
 deploy:
