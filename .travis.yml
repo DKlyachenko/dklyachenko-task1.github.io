@@ -1,7 +1,7 @@
 language: node_js
 
 before_install:
-  - npm install newman
+  - npm install -g newman
 
 script:
   - newman run collections/secondCollection.postman_collection.json -e collections/Testing.postman_environment.json -d collections/testData.json
