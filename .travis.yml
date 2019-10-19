@@ -10,7 +10,6 @@ before_install:
   - newman --version
 
 script:
-  - newman -v
   - newman run collections/secondCollection.postman_collection.json -e collections/Testing.postman_environment.json -d collections/testData.json
 
 
