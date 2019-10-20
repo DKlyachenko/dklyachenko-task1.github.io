@@ -9,12 +9,12 @@ then
     if [[ "${1}" == "master" ]] || [[ "${1}" == "develop" ]]
     then
         echo "Correct branch"
-        repositoryAddress = "DKlyachenko/dklyachenko-task1.github.io"
+        repositoryRelativeGitHubAddress="DKlyachenko/dklyachenko-task1.github.io"
 
         echo "Prepare for deploy to gh-pages."
         echo $PWD
-        echo "Clone ${repositoryAddress} to gh-pages"
-        git clone --recursive "https://github.com/${repositoryAddress}.git" repo
+        echo "Clone ${repositoryRelativeGitHubAddress} to gh-pages"
+        git clone --recursive "https://github.com/${repositoryRelativeGitHubAddress}.git" repo
         cd repo
         echo $PWD
 
@@ -38,7 +38,7 @@ then
         git add --all
         git commit -m "Update gh-pages for ${TRAVIS_BRANCH} branch"
 
-        git push --force --quiet "https://${GH_TOKEN}@github.com/${repositoryAddress}.git" > /dev/null 2>&1
+        git push --force --quiet "https://${GH_TOKEN}@github.com/${repositoryRelativeGitHubAddress}.git" > /dev/null 2>&1
     fi
 fi
 echo "Deploy finished"
